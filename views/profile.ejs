@@ -1,21 +1,30 @@
 
  <head>
     <title>Profile-page</title>
+    <link rel="stylesheet" href="profile.css">
+
 </head>
 
 <body>
     
-   <div>
-       <h3><%= content.username%></h3>
-   </div>
-
-   <div>
-       <h3><%= content.work%></h3>
-   </div>
-
-    <div>
-        <h3><%= content.contact%></h3>
+    <div id="outer">
+        <div class="inner">
+            <h3>Name <%= content.username%></h3>
+        </div>
+     
+        <div class="inner">
+            <h3>Profession <%= content.work%></h3>
+        </div>
+     
+         <div class="inner">
+             <h3>Primary contact no. <%= content.contact%></h3>
+         </div>
+     
+         <div class="inner">
+             <a href="/logout">Click to logout</a>
+         </div>
     </div>
+   
 
 
 </body>

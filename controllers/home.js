@@ -10,20 +10,12 @@ const User = require('../models/user.js');
 
 
 router.get('/',function(req,res){
-    
-    
-
     if(req.isAuthenticated()){
-       
-        
         res.render('profile',{
             content: req.user
         });
-      
-
-    }
-    else
-    res.render('index');
+    }else
+         res.render('index');
 });
 
 router.get('/go', function(req, res){
@@ -66,7 +58,7 @@ router.post('/sign-up',function(req,res){
                 console.log('error in creating user', err);
             }
             console.log(user);
-             return res.end(`<h1>New user created: ${user.username}</h1>`);
+             return res.redirect('/login');
             });
         }
         if(user){
