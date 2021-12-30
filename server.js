@@ -13,10 +13,11 @@ const db = require('./config/mongoose');
 const MongoStore = require('connect-mongo');
 
 // creating 24 hours from milliseconds
-const oneDay = 1000 * 60 * 10;
+const oneDay = 1000 * 60 * 2;
 
 //session middleware
 app.use(sessions({
+    name: 'dodo',
     secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
     saveUninitialized:true,
     cookie: { maxAge: oneDay },

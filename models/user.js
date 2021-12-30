@@ -8,6 +8,13 @@ const userSchema = new mongoose.Schema({
         required: true,
         
     },
+    work: {
+        type: String
+    },
+    contact: {
+        type: String
+    }
+    ,
 
     password: {
         type: String,

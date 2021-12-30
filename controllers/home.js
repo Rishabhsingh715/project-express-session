@@ -7,16 +7,22 @@ const passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/user.js');
 
-// a variable to save a session
-var session;
+
 
 router.get('/',function(req,res){
     
-    session=req.session;
+    
 
-    if(session.userid){
-        res.send("Welcome User <a href=\'/logout'>click to logout</a>");
-    }else
+    if(req.isAuthenticated()){
+       
+        
+        res.render('profile',{
+            content: req.user
+        });
+      
+
+    }
+    else
     res.render('index');
 });
 
@@ -27,8 +33,22 @@ router.get('/go', function(req, res){
 
 
 router.post('/login', passport.authenticate('local', { failureRedirect: '/' }),function(req,res){
-      
-    res.end('Welcome back bro');
+
+    let user = User.findOne({username: req.body.username}, function(err, user){
+        if(err){
+            console.log('error in finding user', err);
+        }
+        // req.session.userid = user.username; //old method we can now do this using the passport serializer.
+
+        res.render('profile',{
+            content: user
+        });
+
+    });
+  
+
+    
+    // res.end(`<h1>Welcome back bro ${req.body.username}</h1>`);
 
 });
 

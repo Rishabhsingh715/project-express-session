@@ -29,7 +29,7 @@ passport.use(new LocalStrategy({
 //serializing the user to decide which key is to be kept in the cookies 
 // same like we used to set a key inside the session obj, and then we can use the key-value to authenticate the user on further request.
 passport.serializeUser(function(user, done){
-    done(null, user.id)
+    done(null, user._id);
 });
 
 //deserializing the user from the key in the cookies
